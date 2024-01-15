@@ -6,8 +6,8 @@ import pandas as pd
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.svm import SVR
 
-from helpers import find_yn
-from errors import display_pretty_errors, get_errors
+from core.helpers import find_yn
+from core.errors import display_pretty_errors, get_errors
 
 
 @dataclass
