@@ -71,3 +71,7 @@ def display_errors(errors: [str, str]):
     for name, value in errors:
         print(f"{name}: {value}")
     print()
+
+
+def find_yn(z, y_sum, N):
+    return np.array([(y_sum + sum(z[i: i + N])) / N for i in range(0, len(z), N)])
