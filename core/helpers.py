@@ -27,29 +27,6 @@ def collect_cluster_center_target_coordinates(
     return np.array(cluster_center_feature)
 
 
-def insert_column(data: np.ndarray, column_to_insert, insert_idx):
-    """
-    Insert a new column into a NumPy array at a specified index.
-
-    Parameters:
-    data (np.ndarray): The original 2D NumPy array where the new column will be inserted.
-    column_to_insert: The column to be inserted (1D NumPy array or list).
-    insert_idx (int): The index at which the new column will be inserted.
-
-    Returns:
-    np.ndarray: A new NumPy array with the specified column inserted at the specified index.
-
-    Notes:
-    - The original array 'data' is not modified. Instead, a new array with the inserted column is returned.
-    - 'insert_idx' should be a non-negative integer within the valid range of column indices for the input data.
-    - 'column_to_insert' should have a compatible number of rows as 'data' for a successful insertion.
-    - The 'axis=1' argument is used for inserting the column as a new column (horizontally).
-    """
-    new_array = np.insert(data, insert_idx, column_to_insert, axis=1)
-
-    return new_array
-
-
 def root_mean_squared_error(y_true, y_pred):
     return np.sqrt(((y_pred - y_true) ** 2).mean())
 
@@ -66,12 +43,5 @@ def flat_errors(y_target, y):
     ]
 
 
-def display_errors(errors: [str, str]):
-    print()
-    for name, value in errors:
-        print(f"{name}: {value}")
-    print()
-
-
 def find_yn(z, y_sum, N):
-    return np.array([(y_sum + sum(z[i: i + N])) / N for i in range(0, len(z), N)])
+    return np.array([(y_sum + sum(z[i : i + N])) / N for i in range(0, len(z), N)])

@@ -53,7 +53,11 @@ class InputDoublingMethod:
         self.__y_target_train = data.y_target_train
         self.__y_target_test = data.y_target_test
 
+        import time
+
+        start_time = time.time()
         regressor.fit(data.train_features, data.train_labels)
+        print("--- %s seconds ---" % (time.time() - start_time))
 
         train_pred_z = regressor.predict(data.train_features)
 
@@ -81,12 +85,18 @@ class InputDoublingMethod:
             display_pretty_errors(test_errors)
         else:
             print("!!! Some of values is empty")
-    
+
     @staticmethod
     def save_errors_to_csv(data, file_path):
-        index = ['MAPE', 'RMSE', 'MAE', 'Max error', 'Median absolute error', 'Mean Squared error', 'R2']
+        index = [
+            "MAPE",
+            "RMSE",
+            "MAE",
+            "Max error",
+            "Median absolute error",
+            "Mean Squared error",
+            "R2",
+        ]
 
         df = pd.DataFrame(data, index=index)
-        df.to_csv(file_path, index=True,encoding='utf-8-sig')
-
-
+        df.to_csv(file_path, index=True, encoding="utf-8-sig")
